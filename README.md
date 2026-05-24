@@ -30,6 +30,10 @@
  refactor the code to add constants file + create a components folder
 
 
+ - You Should not be access other routes without login
+ - If tokens is not present, redirect user to login page
+ - Logout
+
  Body
    NavBar
    Route="/" => Base page
