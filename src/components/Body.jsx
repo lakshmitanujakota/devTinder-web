@@ -5,6 +5,7 @@ import { BASE_URL } from "../utilis/constants";
 import { useDispatch, useSelector } from "react-redux";
 import { addUser } from "../utilis/userSlice";
 import { useEffect } from "react";
+import Footer from "./Footer";
 
 const Body = () => {
     const dispatch = useDispatch();
@@ -32,6 +33,7 @@ const Body = () => {
         <div>
             <NavBar />
             <Outlet />
+            <Footer/>
         </div>
     )
 };

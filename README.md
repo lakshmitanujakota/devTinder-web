@@ -33,6 +33,8 @@
  - You Should not be access other routes without login
  - If tokens is not present, redirect user to login page
  - Logout
+ - Get the feed and add the feed in the store
+ - Build the user card on feed page
 
  Body
    NavBar
