@@ -34,7 +34,7 @@ const NavBar = () => {
               src={user.photoURL}/>
           </div>
         </div>
-        <ul
+        <ul     
           tabIndex="-1"
           className="menu menu-sm dropdown-content bg-base-100 rounded-box z-1 mt-3 w-52 p-2 shadow">
           <li>
@@ -42,7 +42,8 @@ const NavBar = () => {
               Profile
             </Link>
           </li>
-          <li><a>Settings</a></li>
+          <li><Link to="/connection">Connetions</Link></li>
+          <li><Link to="/requests">Request Received</Link></li>
           <li><Link onClick={handleLogout}>Logout</Link></li>
         </ul>
       </div>)}
