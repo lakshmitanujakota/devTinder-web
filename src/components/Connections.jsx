@@ -20,37 +20,41 @@ const Connections = () => {
     useEffect(() => { fetchConnections(); }, []);
 
 
-    if (connections.length===0) return (<h1 className="text-4xl font-bold text-center mb-10">
-        No Connection Present
-    </h1>);
+    if (connections.length === 0) return (<div className="min-h-screen bg-[#1a1f2e] flex items-center justify-center">
+        <h1 className="text-2xl text-[#7f77dd] opacity-60">No connections yet</h1>
+    </div>);
 
     return (
-        <div key="_id" className="min-h-screen bg-base-200 py-10">
-            <h1 className="text-4xl font-bold text-center mb-10">
+        <div className="min-h-screen bg-[#1a1f2e] py-10 px-4">
+            <h1 className="text-3xl font-medium text-center mb-8 text-[#cecbf6] tracking-wide">
                 Connections
             </h1>
 
-            <div className="max-w-4xl mx-auto space-y-5">
-                {connections.map((connections) => {
-                    const { _id, firstName, lastName, photoURL, age, gender, about } = connections;
-                    return (<div className="card card-side bg-base-100 shadow-xl">
-                        <figure className="p-5">
-                            <img
-                                src={photoURL}
-                                className="w-24 h-24 rounded-full object-cover"
-                            />
-                        </figure>
+            <div className="max-w-2xl mx-auto space-y-3">
+                {connections.map((connection) => {
+                    const { _id, firstName, lastName, photoURL, age, gender, about } = connection;
+                    return (<div key={_id}className="flex items-center gap-4 p-4 rounded-2xl border border-[#2e3a52]"
+                        style={{ background: "#242b3d" }}>
 
-                        <div className="card-body">
-                            <h2 className="card-title text-xl">
-                                {firstName+ " " +lastName   }
+                        {photoURL ? (<img
+                            src={photoURL}
+                            alt={firstName?.[0]?.toUpperCase()}
+                            className="w-14 h-14 rounded-full object-cover border-2 border-[#1d9e75] flex-shrink-0"
+                        />) : <div>
+                            {firstName?.[0]?.toUpperCase()}{lastName?.[0].toUpperCase()}
+                        </div>}
+
+
+                        <div className="flex-1 min-w-0">
+                            <h2 className="text-[#e8e6f7] font-medium text-base">
+                                {firstName + " " + lastName}
                             </h2>
 
-                          { age && gender && <p className="text-sm opacity-70">
-                                {age + " "+gender}
+                            {age && gender && <p className="text-[#5dcaa5] text-xs mt-0.5">
+                                {age + " " + gender}
                             </p>}
 
-                            <p className="text-base">
+                            <p className="text-[#b0aec8] text-sm mt-1 truncate">
                                 {about}
                             </p>
                         </div>

@@ -36,6 +36,18 @@
  - Get the feed and add the feed in the store
  - Build the user card on feed page
 
+ - Edit Profile Feature
+ - Show Toast Message on save of Profile
+ - New page - to see all my connections
+ - New Page -To see all my requests recived
+
+ - feature - Accept/Reject cconnection Requests
+
+ Remaining 
+  - Send / Ignore the user
+  - Sign Up
+  - Testing
+
  Body
    NavBar
    Route="/" => Base page

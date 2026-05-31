@@ -1,22 +1,22 @@
-const UserCard = ({user}) => {
+const UserCard = ({ user }) => {
 
     const { firstName, lastName, age, about, gender, photoURL } = user
 
     return (
-        <div className="card w-96 bg-base-100 shadow-2xl">
-            <figure  className="px-6 pt-6">
+        <div className="w-96 rounded-3xl border border-[#2e3a52] overflow-hidden" style={{ background: "#242b3d" }}>
+            <div className="w-full h-72 bg-[#1a1f2e]">
                 <img
                     src={photoURL}
-                    alt="User Photo" 
-                    className="rounded-2xl h-72 w-full object-cover" />
-            </figure>
-            <div  className="card-body items-center text-center">
-                <h2 className="card-title text-2xl">{firstName +" "+lastName} </h2>
-                {age && gender && <p className="text-sm opacity-70">{age + " " + gender}</p>}
-                <p className="mt-2 text-base-content">{about}</p>
-                <div className="card-actions mt-4">
-                    <button className="btn btn-primary">Interested</button>
-                    <button  className="btn btn-outline btn-secondary">Ignored</button>
+                    alt="User Photo"
+                    className="w-full h-full object-cover" />
+            </div>
+            <div className="p-6 text-center">
+                <h2 className="text-xl font-medium text-[#e8e6f7]">{firstName + " " + lastName} </h2>
+                {age && gender && <p className="text-sm text-[#5dcaa5] mt-1">{age + " " + gender}</p>}
+                <p className="text-[#b0aec8] text-sm mt-3">{about}</p>
+                <div className="flex gap-3 justify-center mt-5">
+                    <button className="px-6 py-2 rounded-xl text-sm font-medium bg-emerald-600 text-white hover:bg-emerald-500 transition-colors">Interested</button>
+                    <button className="px-6 py-2 rounded-xl text-sm font-medium bg-[#1a1f2e] text-[#888] border border-[#2e3a52] hover:border-[#534ab7] hover:text-[#afa9ec] transition-colors">Ignore</button>
                 </div>
             </div>
         </div>)

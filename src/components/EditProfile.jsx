@@ -30,96 +30,67 @@ const EditProfile = ({ user }) => {
         }
     }
 
+    const inputClass = "w-full px-3 py-2 rounded-xl text-sm text-[#e8e6f7] border border-[#2e3a52] outline-none focus:border-[#534ab7] transition-colors";
+
+
     return (
-        <div className="min-h-screen bg-base-200 flex flex-col lg:flex-row items-center justify-center gap-10 p-10">
-            <div className="min-h-screen flex items-center justify-center bg-base-200">
-            <div className="card bg-neutral text-neutral-content w-96 shadow-xl">
-                <div className="card-body">
-                    <h2 className="card-title justify-center text-2xl">Edit Profile</h2>
+        <div className="min-h-screen py-10 px-4 flex flex-col lg:flex-row items-stretch justify-center gap-10"
+            style={{ background: "#1a1f2e" }}>
 
-                    <div className="form-control">
-                        <label className="label">
-                            <span className="label-text text-neutral-content">First Name</span>
-                        </label>
-                        <input
-                            type="email"
-                            value={firstName}
-                            className="input input-bordered w-full text-base-content"
-                            onChange={(e) => setFirstName(e.target.value)}
-                        />
-                    </div>
+            {/* Edit Form — h-full so it stretches to match card height */}
+            <div className="w-96 rounded-2xl border border-[#2e3a52] p-6 flex flex-col"
+                style={{ background: "#242b3d" }}>
 
-                    <div className="form-control">
-                        <label className="label">
-                            <span className="label-text text-neutral-content">Last Name</span>
-                        </label>
-                        <input
-                            type="text"
-                            value={lastName}
-                            className="input input-bordered w-full text-base-content"
-                            onChange={(e) => setLastName(e.target.value)}
-                        />
-                    </div>
-                    <div className="form-control">
-                        <label className="label">
-                            <span className="label-text text-neutral-content">Photo URL</span>
-                        </label>
-                        <input
-                            type="text"
-                            value={photoURL}
-                            className="input input-bordered w-full text-base-content"
-                            onChange={(e) => setPhotoURL(e.target.value)}
-                        />
-                    </div>
-                    <div className="form-control">
-                        <label className="label">
-                            <span className="label-text text-neutral-content">Age</span>
-                        </label>
-                        <input
-                            type="number"
-                            value={age}
-                            className="input input-bordered w-full text-base-content"
-                            onChange={(e) => setAge(e.target.value)}
-                        />
-                    </div>
-                    <div className="form-control">
-                        <label className="label">
-                            <span className="label-text text-neutral-content">Gender</span>
-                        </label>
-                        <input
-                            type="text"
-                            value={gender}
-                            className="input input-bordered w-full text-base-content"
-                            onChange={(e) => setGender(e.target.value)}
-                        />
-                    </div>
-                    <div className="form-control">
-                        <label className="label">
-                            <span className="label-text text-neutral-content">About</span>
-                        </label>
-                        <input
-                            type="text"
-                            value={about}
-                            className="input input-bordered w-full text-base-content"
-                            onChange={(e) => setAbout(e.target.value)}
-                        />
-                    </div>
-                    <p className="text-red-500">{error}</p>
-                    <div className="card-actions mt-4">
-                        <button className="btn btn-primary w-full" onClick={saveUser}>Save Data</button>
-                    </div>
+                <h2 className="text-xl font-medium text-center text-[#cecbf6] mb-6">Edit Profile</h2>
+
+                <div className="flex-1 flex flex-col gap-4">
+                    {[
+                        { label: "First Name", value: firstName, setter: setFirstName, type: "text" },
+                        { label: "Last Name", value: lastName, setter: setLastName, type: "text" },
+                        { label: "Photo URL", value: photoURL, setter: setPhotoURL, type: "text" },
+                        { label: "Age", value: age, setter: setAge, type: "number" },
+                        { label: "Gender", value: gender, setter: setGender, type: "text" },
+                        { label: "About", value: about, setter: setAbout, type: "text" },
+                    ].map(({ label, value, setter, type }) => (
+                        <div key={label}>
+                            <label className="block text-xs text-[#888] mb-1">{label}</label>
+                            <input
+                                type={type}
+                                value={value || ""}
+                                onChange={(e) => setter(e.target.value)}
+                                className="w-full px-3 py-2 rounded-xl text-sm text-[#e8e6f7] border border-[#2e3a52] outline-none focus:border-[#534ab7] transition-colors"
+                                style={{ background: "#1a1f2e" }}
+                            />
+                        </div>
+                    ))}
                 </div>
+
+                {error && <p className="text-red-400 text-sm mt-3">{error}</p>}
+
+                {/* Save button pushed to bottom */}
+                <button
+                    onClick={saveUser}
+                    className="w-full py-2 rounded-xl text-sm font-medium bg-[#534ab7] text-[#e8e6f7] hover:bg-[#7f77dd] transition-colors mt-6">
+                    Save Profile
+                </button>
             </div>
-        </div>
-            <UserCard user={{ firstName, lastName, about, age, about, photoURL, gender }} />
-            { showToast && <div className="toast toast-top toast-center">
-                <div className="alert alert-success">
-                    <span>Profile Data updated successfully.</span>
-                </div>
-            </div>}
-        </div>
 
-    )
-}
+            {/* Card — also stretched */}
+            <div className="flex items-stretch">
+                <UserCard user={{ firstName, lastName, about, age, photoURL, gender }} />
+            </div>
+
+            {/* Toast */}
+            {showToast && (
+                <div className="toast toast-top toast-center z-50">
+                    <div className="px-4 py-3 rounded-xl text-sm font-medium text-[#9fe1cb] border border-[#1d9e75]"
+                        style={{ background: "#0f6e56" }}>
+                        Profile updated successfully!
+                    </div>
+                </div>
+            )}
+        </div>
+    );
+};
 
 export default EditProfile;
