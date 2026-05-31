@@ -18,7 +18,7 @@ const NavBar = () => {
     } catch (err) {
       console.log(err);
     }
-  }
+  } 
   
   const handleFeed =()=>{
     try{

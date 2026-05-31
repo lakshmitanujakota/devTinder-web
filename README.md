@@ -41,9 +41,7 @@
  - New page - to see all my connections
  - New Page -To see all my requests recived
 
- - feature - Accept/Reject cconnection Requests
-
- Remaining 
+ - feature - Accept/Reject cconnection Requests 
   - Send / Ignore the user
   - Sign Up
   - Testing
