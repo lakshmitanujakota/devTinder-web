@@ -54,3 +54,62 @@
    Route="/profile" => profile
 
 
+ # Deployment 
+
+
+  - signup to AWS
+  - create instance - launch instance 
+  - On your terminal 
+  - Go to your folder where you downloaded the key 
+  - ssh -i "devTinder-secret.pem" ubuntu@ec2-16-171-253-123.eu-north-1.compute.amazonaws.com
+  - curl -fsSL https://deb.nodesource.com/setup_22.x | sudo -E bash -
+  - installed git devTinder back end & front end code in new instance
+  - FrontEnd 
+      - go inside this folder - cd devTinder-web
+      - npm install -dependencies install
+      - npm run build
+      - sudo apt update
+      - sudo apt install nginx
+      - sudo systemctl start nginx
+      - suod systemctl enable nginx
+      - Cpoy code from dist(build file) command - to - /var/www/html
+      - sudo scp -r dist/* /var/www/html/
+      - Enable port: 80 of your instancce
+
+
+
+
+  commands
+
+  # Connect to EC2
+ssh -i devTinder-secret.pem ubuntu@<EC2_PUBLIC_IP>
+
+# Update packages
+sudo apt update
+
+# Install NVM
+curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.40.3/install.sh | bash
+
+# Load NVM in current session
+export NVM_DIR="$HOME/.nvm"
+source "$NVM_DIR/nvm.sh"
+
+# Verify NVM
+nvm --version
+
+# See available Node versions (optional)
+nvm ls-remote
+
+# Install Node.js 20 LTS
+nvm install 20.20.2
+
+# Use Node.js 20
+nvm use 20
+
+# Make Node.js 20 default
+nvm alias default 20
+
+# Verify installation
+node -v
+npm -v
+nvm -v
