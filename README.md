@@ -61,7 +61,7 @@
   - create instance - launch instance 
   - On your terminal 
   - Go to your folder where you downloaded the key 
-  - ssh -i "devTinder-secret.pem" ubuntu@ec2-16-171-253-123.eu-north-1.compute.amazonaws.com
+  -  
   - curl -fsSL https://deb.nodesource.com/setup_22.x | sudo -E bash -
   - installed git devTinder back end & front end code in new instance
   - FrontEnd 
@@ -74,8 +74,29 @@
       - suod systemctl enable nginx
       - Cpoy code from dist(build file) command - to - /var/www/html
       - sudo scp -r dist/* /var/www/html/
-      - Enable port: 80 of your instancce
+      - Enable port: 80 of your instance
+  - Backend 
+      - go inside backend code folder
+      - npm install
+      - npm run start
+      - allow the port in mongodb to all
+      - Add the port 3000 in instance
+      - install pm2 to run the application continously - 24/7 without manual run 
+      - npm install pm2 -g
+      - pm2 start npm --name "project-name" -- start
+      - some pm2 commands to check (pm2 logs,pm2 list, pm2 flush, pm2 delete name, pm2 stop name, pm2 restart npm --start)
+      - config nginx - sudo nano /etc/nginx/sites-available/default
+      - restart ngin after adding service ip and location - sudo systemctl restart nginx
+      - modify the front end code base url to /api 
 
+  # Domain Name
+    - Go to Godaddy Website and search for your project name 
+    - Check for any avaiable Name
+    - Create Account and fill tthe details accordingly  
+    - Sign Up in cloudfare & add a new domain name
+    - change the nameservers on godaddy and point it to cloudfare
+    - wiaat for some time till your nameservers are updated
+    - DNS record: map the ip to your app ip devTinder one A to - your ip 
 
 
 
